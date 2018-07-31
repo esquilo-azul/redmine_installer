@@ -1,3 +1,7 @@
+export postgresql_database=redmine
+export postgresql_database_test=redmine_test
+export postgresql_user=redmine
+export postgresql_password=redmine
 export rvm_ruby=ruby-2.3.6
 export smtp_tls=false
 export smtp_server=localhost
