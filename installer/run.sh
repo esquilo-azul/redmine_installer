@@ -18,4 +18,5 @@ function programeiro {
 }
 export -f programeiro
 
+source "$INSTALL_ROOT/lib/rvm/source.sh"
 "$PLUGIN_ROOT/vendor/taskeiro/taskeiro" --path "$INSTALL_ROOT/tasks" "$@"
