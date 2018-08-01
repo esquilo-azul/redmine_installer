@@ -26,5 +26,9 @@ for var in $(programeiro /template/variables "$1"); do
   cp "$out_tmp" "$in_tmp" >&2
 done
 
-mkdir -p "$(dirname "$OUTPUT_FILE")" >&2
-cp "$out_tmp" "$OUTPUT_FILE" >&2
+if [ "$OUTPUT_FILE" == '-' ]; then
+  cat "$out_tmp"
+else
+  mkdir -p "$(dirname "$OUTPUT_FILE")" >&2
+  cp "$out_tmp" "$OUTPUT_FILE" >&2
+fi
