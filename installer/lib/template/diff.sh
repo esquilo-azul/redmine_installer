@@ -16,9 +16,13 @@ if [ ! -f "$TEMPLATE_FILE" ]; then
   exit 2
 fi
 
-if [ ! -f "$OUTPUT_FILE" ]; then
-  >&2 echo "Output file \"$OUTPUT_FILE\" does not exist"
-  exit 3
+if [ "$OUTPUT_FILE" == '-' ]; then
+  OUTPUT_FILE=/dev/stdin
+else
+  if [ ! -f "$OUTPUT_FILE" ]; then
+    >&2 echo "Output file \"$OUTPUT_FILE\" does not exist"
+    exit 3
+  fi
 fi
 
 INPUT_FILE="$(mktemp)"
