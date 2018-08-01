@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/esquilo-azul/taskeiro
+	branch = master
+	commit = 1ab56496daa8b27e5033acc720bf043f7d9d331e
+	parent = f1d3ae967eec3721336b2027f2cba423e6a55c98
+	method = merge
+	cmdver = 0.4.0

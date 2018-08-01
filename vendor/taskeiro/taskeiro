@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e
+set -u
+
+source "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/lib/init.sh"
+
+taskeiro_read_args "$@"
+taskeiro_start_banner
+taskeiro_validate
+taskeiro_run
