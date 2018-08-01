@@ -1,3 +1,5 @@
+export address_path=/redmine
+export apache_document_root=/var/www/html
 export postgresql_database=redmine
 export postgresql_database_test=redmine_test
 export postgresql_user=redmine
