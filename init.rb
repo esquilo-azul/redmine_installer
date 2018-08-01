@@ -6,5 +6,5 @@ Redmine::Plugin.register :redmine_installer do
   name 'Redmine Installer'
   author 'Eduardo Henrique Bogoni'
   description 'Installer for Redmine'
-  version '0.0.0'
+  version '0.1.0'
 end
