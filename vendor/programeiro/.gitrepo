@@ -7,6 +7,6 @@
 	remote = https://github.com/esquilo-azul/programeiro
 	branch = master
 	commit = 7fa9e79787cf22bf7e32ee7a0fbbc7ec5e22b3fe
-	parent = 25565796280cec1df479f62dbfa400f9c56d4d45
+	parent = 5c89b31560365be6571cad3abe1d3dea2bcd4ab6
 	method = merge
 	cmdver = 0.4.0
