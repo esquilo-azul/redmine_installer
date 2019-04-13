@@ -1,5 +1,26 @@
+source "$TASKEIRO_ROOT/lib/manager/dependencies.sh"
+
+function taskeiro_before_run() {
+  IFS=:
+  for p in $TASKEIRO_PATH; do
+    BEFORE_RUN_PATH="$p/_before_run.sh"
+    if [ -f "$BEFORE_RUN_PATH" ]; then
+      source "$BEFORE_RUN_PATH"
+    fi
+  done
+}
+
 function taskeiro_task_path() {
-  echo "$TASKEIRO_PATH/$1.sh"
+  IFS=:
+  for p in $TASKEIRO_PATH; do
+    TARGET_PATH="$p/$1.sh"
+    if [ -f "$TARGET_PATH" ]; then
+      echo "$TARGET_PATH"
+      exit 0
+    fi
+  done
+  >&2 echo "Task file not found for name \"$1\""
+  exit 1
 }
 
 function _validate_task_name() {
@@ -23,7 +44,7 @@ function _task_run() {
     return
   fi
   _task_check "$1"
-  for dep in $(_call_task_function "$1" task_dependencies 1); do
+  for dep in $(taskeiro_task_dependencies "$1"); do
     _debug "DEPENDENCY $1 -> $dep"
     _task_run "$dep"
   done
@@ -68,7 +89,7 @@ function _task_message_condition {
   if [ "$3" == '0' ]; then
     m=$m' (AFTER FIX)'
   fi
-  m=$m" $FG_LYELLOW[$(_call_task_function "$1" task_dependencies 1)]$NC"
+  m=$m" $FG_LYELLOW[$(taskeiro_task_dependencies "$1")]$NC"
   _infov "$1" "$m"
 }
 

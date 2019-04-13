@@ -19,22 +19,34 @@ function run_test() {
   fi
   export SAMPLE_TEMP_DIR=$(mktemp -d)
   events_reset
+  export CURRENT_TEST="$1"
   "$1"
 }
 
-function assert_equal() {
-  if [ "$1" == "$2" ]; then
+function add_test_result() {
+  if [ $1 -eq 0 ]; then
     SUCCESS=$((SUCCESS+1))
   else
     FAIL=$((FAIL+1))
+    >&2 printf "$CURRENT_TEST failed: $2\n"
+  fi
+}
+
+function assert_equal() {
+  MSG="\"$1\" == \"$2\""
+  if [ "$1" == "$2" ]; then
+    add_test_result 0 "$MSG"
+  else
+    add_test_result 1 "$MSG"
   fi
 }
 
 function assert_not_equal() {
+  MSG="\"$1\" != \"$2\""
   if [ "$1" != "$2" ]; then
-    SUCCESS=$((SUCCESS+1))
+    add_test_result 0 "$MSG"
   else
-    FAIL=$((FAIL+1))
+    add_test_result 1 "$MSG"
   fi
 }
 
@@ -45,9 +57,11 @@ function assert_message() {
 }
 
 function assert_error_message() {
-  eval "$1" 2>&1 >/dev/null | grep "$2" > /dev/null
+  out_file=$(mktemp)
+  eval "$1" 2> "$out_file" >/dev/null
+  grep "$2" "$out_file" > /dev/null
   R=$?
-  assert_equal '0' "$R"
+  add_test_result "$R" "\"$(sed 's/\n/ /g' "$out_file")\" ~= \"$2\""
 }
 
 function assert_success() {
