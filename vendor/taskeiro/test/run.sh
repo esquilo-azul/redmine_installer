@@ -87,4 +87,10 @@ function test_dependencies() {
 }
 run_test 'test_dependencies'
 
+function test_multiple_dependencies() {
+  assert_success '"$TASKEIRO" --path "$MYROOT/tasks" dep4'
+  assert_equal '|task1|task3|dep4|' "$(cat "$EVENTS_FILE")"
+}
+run_test 'test_multiple_dependencies'
+
 tests_end

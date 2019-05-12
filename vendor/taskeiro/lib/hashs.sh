@@ -15,7 +15,7 @@ hash_put() {
 
   NEW_HASH=''
   UPDATED='no'
-  IFS=$HASHS_KEY_SEP
+  local IFS=$HASHS_KEY_SEP
   for p in ${!HASH}; do
     [[ -n "$p" ]] || continue
     if [[ -n "$NEW_HASH" ]]; then NEW_HASH="${NEW_HASH}${HASHS_KEY_SEP}" ; fi
@@ -38,7 +38,7 @@ function hash_get() {
   HASH="$1"
   KEY="$2"
 
-  IFS=$HASHS_KEY_SEP
+  local IFS=$HASHS_KEY_SEP
   for p in ${!HASH}; do
     [[ -n "$p" ]] || continue
     PREFIX="${KEY}${HASHS_KEY_VALUE_SEP}"

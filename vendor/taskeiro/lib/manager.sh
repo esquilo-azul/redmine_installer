@@ -1,7 +1,7 @@
 source "$TASKEIRO_ROOT/lib/manager/dependencies.sh"
 
 function taskeiro_before_run() {
-  IFS=:
+  local IFS=:
   for p in $TASKEIRO_PATH; do
     BEFORE_RUN_PATH="$p/_before_run.sh"
     if [ -f "$BEFORE_RUN_PATH" ]; then
@@ -11,7 +11,7 @@ function taskeiro_before_run() {
 }
 
 function taskeiro_task_path() {
-  IFS=:
+  local IFS=:
   for p in $TASKEIRO_PATH; do
     TARGET_PATH="$p/$1.sh"
     if [ -f "$TARGET_PATH" ]; then
