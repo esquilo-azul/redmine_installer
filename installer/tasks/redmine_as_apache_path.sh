@@ -20,4 +20,5 @@ function task_fix {
   programeiro /template/apply "$INSTALL_ROOT/template/redmine_as_apache_path.conf" - | \
     sudo tee /etc/apache2/conf-available/redmine.conf > /dev/null
   sudo a2enconf redmine
+  programeiro /redmine/installer/triggers/set 'apache_restart'
 }
