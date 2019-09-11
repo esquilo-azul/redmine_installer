@@ -9,6 +9,6 @@ if [ -f "$APP_SETTINGS" ]; then
 fi
 
 function programeiro {
-  PPATH="$INSTALL_ROOT/lib" "$PLUGIN_ROOT/vendor/programeiro/run.sh" "$@"
+  PPATH="$INSTALL_ROOT/programs" "$PLUGIN_ROOT/vendor/programeiro/run.sh" "$@"
 }
 export -f programeiro
