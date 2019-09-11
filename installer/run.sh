@@ -12,5 +12,5 @@ done
 DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
 
 source "${DIR}/environment.sh"
-"$PLUGIN_ROOT/vendor/taskeiro/taskeiro" --path "$INSTALL_ROOT/tasks" "$@"
+taskeiro "$@"
 programeiro /redmine/installer/triggers/run_all

@@ -30,3 +30,13 @@ function programeiro {
   PPATH="$(programeiro_path)" "$PLUGIN_ROOT/vendor/programeiro/run.sh" "$@"
 }
 export -f programeiro
+
+function taskeiro_path {
+  _build_plugins_path "tasks"
+}
+export -f taskeiro_path
+
+function taskeiro {
+  "$PLUGIN_ROOT/vendor/taskeiro/taskeiro" --path "$(taskeiro_path)" "$@"
+}
+export -f taskeiro
