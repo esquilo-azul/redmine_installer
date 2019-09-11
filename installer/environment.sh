@@ -8,7 +8,25 @@ if [ -f "$APP_SETTINGS" ]; then
   source "$APP_SETTINGS"
 fi
 
+function _build_plugins_path {
+  SUBDIR="$1"
+  RESULT=''
+  for DIR in "${REDMINE_ROOT}/plugins/"*"/installer/${SUBDIR}"; do
+    if [ -n "$RESULT" ]; then
+      RESULT+=':'
+    fi
+    RESULT+="$DIR"
+  done
+  printf -- "$RESULT\n"
+}
+export -f _build_plugins_path
+
+function programeiro_path {
+  _build_plugins_path "programs"
+}
+export -f programeiro_path
+
 function programeiro {
-  PPATH="$INSTALL_ROOT/programs" "$PLUGIN_ROOT/vendor/programeiro/run.sh" "$@"
+  PPATH="$(programeiro_path)" "$PLUGIN_ROOT/vendor/programeiro/run.sh" "$@"
 }
 export -f programeiro
