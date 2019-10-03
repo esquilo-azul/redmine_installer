@@ -8,5 +8,5 @@ function task_condition {
 }
 
 function task_dependencies {
-  echo redmine_database_schema redmine_database_test
+  echo libpng_twelve redmine_database_schema redmine_database_test
 }
