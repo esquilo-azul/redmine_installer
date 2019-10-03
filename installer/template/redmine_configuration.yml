@@ -11,3 +11,4 @@ default:
       authentication: ${smtp_authentication}
       user_name: '${smtp_username}'
       password: '${smtp_password}'
+  scm_git_command: /usr/bin/git
