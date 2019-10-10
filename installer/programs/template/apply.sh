@@ -3,13 +3,16 @@
 set -u
 set -e
 
-if [ $# -lt 2 ]; then
-  >&2 echo "Usage: $0 <TEMPLATE_FILE> <OUTPUT_FILE>"
+if [ $# -lt 1 ]; then
+  >&2 echo "Usage: $0 <TEMPLATE_FILE> [<OUTPUT_FILE>='-']"
   exit 1
 fi
 
+OUTPUT_FILE='-'
+if [ $# -ge 2 ]; then
+  OUTPUT_FILE="$2"
+fi
 TEMPLATE_FILE="$1"
-OUTPUT_FILE="$2"
 
 out_tmp=$(mktemp)
 in_tmp=$(mktemp)
