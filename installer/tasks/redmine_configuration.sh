@@ -6,6 +6,10 @@ set -e
 TEMPLATE_ARGS=("$INSTALL_ROOT/template/redmine_configuration.yml"
   "$REDMINE_ROOT/config/configuration.yml")
 
+if [ ! -v 'REDMINE_CONFIGURATION_EXTRA' ]; then
+  export REDMINE_CONFIGURATION_EXTRA=''
+fi
+
 function task_condition {
   programeiro /template/diff "${TEMPLATE_ARGS[@]}"
 }
