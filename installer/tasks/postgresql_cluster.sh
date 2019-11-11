@@ -4,9 +4,7 @@ set -u
 set -e
 
 function task_condition {
-  if [ ! -f "/etc/postgresql/${postgresql_version}/main/postgresql.conf" ]; then
-    return 1
-  fi
+  pg_lsclusters | grep "/var/lib/postgresql/${postgresql_version}/main"
 }
 
 function task_dependencies {
