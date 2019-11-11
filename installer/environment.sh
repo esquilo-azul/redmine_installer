@@ -40,3 +40,8 @@ function taskeiro {
   "$PLUGIN_ROOT/vendor/taskeiro/taskeiro" --path "$(taskeiro_path)" "$@"
 }
 export -f taskeiro
+
+export instance_id="$(programeiro /text/parameterize "$address_path")"
+if [ -z "$instance_id" ]; then
+  export instance_id="$(programeiro /text/parameterize "$REDMINE_ROOT")"
+fi
