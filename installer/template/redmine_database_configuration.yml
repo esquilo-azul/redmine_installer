@@ -6,6 +6,7 @@ production:
   password: ${postgresql_password}
   encoding: utf8
   pool: 50
+  reconnect: true
 
 development:
   adapter: postgresql
@@ -15,6 +16,7 @@ development:
   password: ${postgresql_password}
   encoding: utf8
   pool: 50
+  reconnect: true
 
 test:
   adapter: postgresql
@@ -24,3 +26,4 @@ test:
   password: ${postgresql_password}
   encoding: utf8
   pool: 50
+  reconnect: true
