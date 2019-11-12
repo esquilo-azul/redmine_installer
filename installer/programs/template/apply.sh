@@ -17,8 +17,12 @@ TEMPLATE_FILE="$1"
 out_tmp=$(mktemp)
 in_tmp=$(mktemp)
 
-cp "$TEMPLATE_FILE" "$in_tmp" >&2
-cp "$TEMPLATE_FILE" "$out_tmp" >&2
+if [ "$TEMPLATE_FILE" == '-' ]; then
+  >&2 cat <&0 > "$in_tmp"
+else
+  >&2 cp "$TEMPLATE_FILE" "$in_tmp"
+fi
+cp "$in_tmp" "$out_tmp" >&2
 
 for var in $(programeiro /template/variables "$1"); do
   if [ -z ${!var+x} ]; then
