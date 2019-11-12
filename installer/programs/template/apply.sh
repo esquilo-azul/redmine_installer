@@ -29,7 +29,11 @@ for var in $(programeiro /template/variables "$1"); do
     >&2 echo "Variable \"$var\" is unset"
     exit 1
   fi
-  sed -e "s|\${$var}|${!var}|" "$in_tmp" > "$out_tmp"
+  CONTENT="$(cat "$in_tmp"; printf Z)"
+  CONTENT="${CONTENT%Z}"
+  FROM="\${$var}"
+  TO="${!var}"
+  printf '%s' "${CONTENT/$FROM/$TO}" > "$out_tmp"
   cp "$out_tmp" "$in_tmp" >&2
 done
 
