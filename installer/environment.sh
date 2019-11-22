@@ -2,7 +2,7 @@ export INSTALL_ROOT=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 export PLUGIN_ROOT=$(dirname "$INSTALL_ROOT")
 export REDMINE_ROOT=$(dirname "$(dirname "$PLUGIN_ROOT")")
 
-source "$INSTALL_ROOT/default-settings.sh"
+source "$INSTALL_ROOT/default_settings.sh"
 APP_SETTINGS="$REDMINE_ROOT/config/install.sh"
 if [ -f "$APP_SETTINGS" ]; then
   source "$APP_SETTINGS"
