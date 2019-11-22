@@ -20,6 +20,10 @@ in_tmp=$(mktemp)
 if [ "$TEMPLATE_FILE" == '-' ]; then
   >&2 cat <&0 > "$in_tmp"
 else
+  if [ ! -f "$TEMPLATE_FILE" ]; then
+    >&2 printf "Template file \"$TEMPLATE_FILE\" does not exist or is not a file\n"
+    exit 2
+  fi
   >&2 cp "$TEMPLATE_FILE" "$in_tmp"
 fi
 cp "$in_tmp" "$out_tmp" >&2
