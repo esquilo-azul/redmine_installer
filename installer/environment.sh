@@ -1,12 +1,9 @@
+set -e
+set -u
+
 export INSTALL_ROOT=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 export PLUGIN_ROOT=$(dirname "$INSTALL_ROOT")
 export REDMINE_ROOT=$(dirname "$(dirname "$PLUGIN_ROOT")")
-
-source "$INSTALL_ROOT/default_settings.sh"
-APP_SETTINGS="$REDMINE_ROOT/config/install.sh"
-if [ -f "$APP_SETTINGS" ]; then
-  source "$APP_SETTINGS"
-fi
 
 function _build_plugins_path {
   SUBDIR="$1"
@@ -20,6 +17,18 @@ function _build_plugins_path {
   printf -- "$RESULT\n"
 }
 export -f _build_plugins_path
+
+SETTINGS_PATH="$(_build_plugins_path 'default_settings.sh')"
+IFSBAK="$IFS"
+IFS=:
+for SETTINGS in $SETTINGS_PATH; do
+  source "$SETTINGS"
+done
+IFS="$IFSBAK"
+APP_SETTINGS="$REDMINE_ROOT/config/install.sh"
+if [ -f "$APP_SETTINGS" ]; then
+  source "$APP_SETTINGS"
+fi
 
 function programeiro_path {
   _build_plugins_path "programs"
