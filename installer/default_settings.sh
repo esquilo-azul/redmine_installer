@@ -1,3 +1,5 @@
+export address_host=localhost
+export address_port=
 export address_path=/redmine
 export apache_document_root=/var/www/html
 export postgresql_database=redmine

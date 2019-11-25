@@ -54,3 +54,8 @@ export instance_id="$(programeiro /text/parameterize "$address_path")"
 if [ -z "$instance_id" ]; then
   export instance_id="$(programeiro /text/parameterize "$REDMINE_ROOT")"
 fi
+
+export address_authority="$address_host"
+if [ -n "$address_port" ]; then
+  export address_authority="$address_authority:$address_port"
+fi
