@@ -30,6 +30,14 @@ if [ -f "$APP_SETTINGS" ]; then
   source "$APP_SETTINGS"
 fi
 
+SETUPS_PATH="$(_build_plugins_path 'setup.sh')"
+IFSBAK="$IFS"
+IFS=:
+for SETUP in $SETUPS_PATH; do
+  source "$SETUP"
+done
+IFS="$IFSBAK"
+
 function programeiro_path {
   _build_plugins_path "programs"
 }
