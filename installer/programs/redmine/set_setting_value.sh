@@ -21,7 +21,7 @@ function updateSetting {
 }
 
 setting_name=$1
-setting_value=$2
+setting_value=$(printf '%s' "$2" | programeiro /text/escape_single_quotes)
 
 if settingSetted "$setting_name"; then
   updateSetting "$setting_name" "$setting_value"
