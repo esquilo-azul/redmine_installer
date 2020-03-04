@@ -27,3 +27,4 @@ test:
   encoding: utf8
   pool: 50
   reconnect: true
+${REDMINE_DATABASE_CONFIGURATION_EXTRA}

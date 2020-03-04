@@ -9,6 +9,10 @@ set -e
 TEMPLATE_ARGS=("$INSTALL_ROOT/template/redmine_database_configuration.yml"
   "$REDMINE_ROOT/config/database.yml")
 
+if [ ! -v 'REDMINE_DATABASE_CONFIGURATION_EXTRA' ]; then
+  export REDMINE_DATABASE_CONFIGURATION_EXTRA=''
+fi
+
 function task_condition {
   programeiro /template/diff "${TEMPLATE_ARGS[@]}"
 }
