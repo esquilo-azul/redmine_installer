@@ -12,7 +12,7 @@ function task_condition {
 }
 
 function task_fix {
-  programeiro /apt/assert_installed libmagickwand-dev libxslt1-dev libpq-dev imagemagick git
+  programeiro /apt/assert_installed libmagickwand-dev libxslt1-dev libpq-dev imagemagick git cmake
   programeiro /rails/bundle install
   programeiro /redmine/installer/triggers/set 'apache_restart'
 }

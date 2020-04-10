@@ -8,7 +8,7 @@ function task_condition {
 }
 
 function task_dependencies {
-  echo postgresql
+  echo postgresql_cluster
 }
 
 function task_fix {
