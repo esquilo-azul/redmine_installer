@@ -20,10 +20,14 @@ function migration_status() {
   fi
 }
 
+function any_plugins_migrations_status() {
+  ls "$REDMINE_ROOT/plugins/"*/db/migrate/*.rb > /dev/null 2>&1
+}
+
 if ! migration_status 'db:migrate:status'; then
   exit 1
 fi
-if ! migration_status 'redmine:plugins:migrate:status'; then
+if any_plugins_migrations_status && ! migration_status 'redmine:plugins:migrate:status'; then
   exit 1
 fi
 exit 0
