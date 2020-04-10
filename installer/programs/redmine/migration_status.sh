@@ -12,18 +12,18 @@ function migration_status() {
   up=$?
   set -e
   if [ -z "$content" ]; then
-    echo 0
+    return 1
   elif [ "$down" -eq 0 -o "$up" -ne 0 ]; then
-    echo 1
+    return 1
   else
-    echo 0
+    return 0
   fi
 }
 
-if [ "$(migration_status 'db:migrate:status')" != '0' ]; then
+if ! migration_status 'db:migrate:status'; then
   exit 1
 fi
-if [ "$(migration_status 'redmine:plugins:migrate:status')" != '0' ]; then
+if ! migration_status 'redmine:plugins:migrate:status'; then
   exit 1
 fi
 exit 0
