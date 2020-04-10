@@ -1,7 +1,7 @@
 default:
   email_delivery:
-    delivery_method: :async_smtp
-    async_smtp_settings:
+    delivery_method: :${async_prefix}smtp
+    ${async_prefix}smtp_settings:
       tls: ${smtp_tls}
       enable_starttls_auto: true
       openssl_verify_mode: 'none'
