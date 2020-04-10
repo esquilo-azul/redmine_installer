@@ -12,5 +12,5 @@ function task_dependencies {
 }
 
 function task_fix {
-  programeiro /rails/rake db:migrate redmine:plugins:migrate
+  programeiro /rails/rake redmine:migrate
 }

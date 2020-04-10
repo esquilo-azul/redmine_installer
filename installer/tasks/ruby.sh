@@ -3,7 +3,7 @@
 set -u
 set -e
 
-source "$INSTALL_ROOT/lib/rvm/source.sh"
+source "$INSTALL_ROOT/programs/rvm/source.sh"
 
 function task_dependencies {
   echo rvm

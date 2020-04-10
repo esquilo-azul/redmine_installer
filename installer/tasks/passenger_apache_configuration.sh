@@ -45,4 +45,5 @@ function task_fix {
   passenger_load | sudo tee /etc/apache2/mods-available/passenger.load > /dev/null
   passenger_conf | sudo tee /etc/apache2/mods-available/passenger.conf > /dev/null
   sudo a2enmod passenger
+  programeiro /redmine/installer/triggers/set 'apache_restart'
 }
