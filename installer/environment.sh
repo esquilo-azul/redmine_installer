@@ -33,9 +33,11 @@ fi
 SETUPS_PATH="$(_build_plugins_path 'setup.sh')"
 IFSBAK="$IFS"
 IFS=:
-for SETUP in $SETUPS_PATH; do
-  source "$SETUP"
-done
+if ls $SETUPS_PATH 1> /dev/null 2>&1; then
+  for SETUP in $SETUPS_PATH; do
+    source "$SETUP"
+  done
+fi
 IFS="$IFSBAK"
 
 function programeiro_path {
