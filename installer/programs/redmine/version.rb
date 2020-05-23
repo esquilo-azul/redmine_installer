@@ -7,9 +7,14 @@ def programeiro_path
   ::File.join(ENV['INSTALL_ROOT'], 'programeiro.sh')
 end
 
+def present_lines(string)
+  string.each_line.map(&:strip).reject { |line| line == '' }
+end
+
 def redmine_version
   r = ::Open3.capture2(programeiro_path, '/rails/rake', 'redmine:version')
-  return r[0].strip if r[1].to_i.zero?
+  return present_lines(r[0]).last if r[1].to_i.zero?
+
   raise "Failed: #{r}"
 end
 
