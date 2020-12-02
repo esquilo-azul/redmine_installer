@@ -11,6 +11,7 @@ export postgresql_version=10
 export rvm_ruby=ruby-2.5.8
 export smtp_tls=false
 export smtp_enable_starttls_auto=true
+export smtp_openssl_verify_mode=none
 export smtp_server=localhost
 export smtp_domain=example.com
 export smtp_port=25

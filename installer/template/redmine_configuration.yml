@@ -4,7 +4,7 @@ default:
     ${async_prefix}smtp_settings:
       tls: ${smtp_tls}
       enable_starttls_auto: ${smtp_enable_starttls_auto}
-      openssl_verify_mode: 'none'
+      openssl_verify_mode: '${smtp_openssl_verify_mode}'
       address: '${smtp_server}'
       port: '${smtp_port}'
       domain: '${smtp_domain}'
