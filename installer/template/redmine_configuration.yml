@@ -3,7 +3,7 @@ default:
     delivery_method: :${async_prefix}smtp
     ${async_prefix}smtp_settings:
       tls: ${smtp_tls}
-      enable_starttls_auto: true
+      enable_starttls_auto: ${smtp_enable_starttls_auto}
       openssl_verify_mode: 'none'
       address: '${smtp_server}'
       port: '${smtp_port}'
