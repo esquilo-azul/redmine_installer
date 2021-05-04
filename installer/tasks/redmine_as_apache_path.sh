@@ -22,6 +22,10 @@ function task_condition {
 }
 
 function task_fix {
+  if [ -z "${address_path}" ]; then
+    printf "Variable \$address_path is blank - cannot create Apache configuration\n"
+    return 1
+  fi
   programeiro /template/apply "$TEMPLATE" - | sudo tee "$AVAILABLE_PATH" > /dev/null
   sudo a2enconf "${instance_id}"
   programeiro /redmine/installer/triggers/set 'apache_restart'
