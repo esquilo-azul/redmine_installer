@@ -1,0 +1,20 @@
+= Redmine Installer
+
+A plugable installer for Redmine.
+
+== Requirements
+
+* Ubuntu 20.04;
+* A user with sudo privileges.
+
+== Installation
+
+Put this source code in the plugins directory (plugins/redmine_installer).
+
+== How to use
+
+Copy the content of plugins/redmine_installer/default_settings.sh to config/install.sh. Change according to your installation needs.
+
+Execute
+* plugins/redmine_installer/installer/run.sh development (To install without Apache HTTPD); or
+* plugins/redmine_installer/installer/run.sh development (To install with Apache HTTPD).
