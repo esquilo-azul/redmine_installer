@@ -8,5 +8,5 @@ Redmine::Plugin.register :redmine_installer do
   description 'Installer for Redmine.'
   url 'https://github.com/esquilo-azul/redmine_installer'
   author_url 'https://github.com/eduardobogoni/'
-  version '0.12.0'
+  version '0.13.0'
 end
