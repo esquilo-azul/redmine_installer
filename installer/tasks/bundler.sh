@@ -3,7 +3,7 @@
 set -u
 set -e
 
-GEMS=(bundler)
+GEMS=(bundler "$(programeiro /rails/bundler_version)")
 
 function task_dependencies {
   echo ruby
@@ -14,5 +14,5 @@ function task_condition {
 }
 
 function task_fix {
-  gem install -V --conservative "${GEMS[@]}"
+  programeiro /ruby/gem_install "${GEMS[@]}"
 }
