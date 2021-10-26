@@ -3,16 +3,16 @@
 set -u
 set -e
 
-GEMS=(passenger)
+GEM_NAME="passenger"
 
 function task_dependencies {
   echo ruby
 }
 
 function task_condition {
-  programeiro /ruby/gem_installed "${GEMS[@]}"
+  programeiro /ruby/gem_installed "$GEM_NAME"
 }
 
 function task_fix {
-  gem install -V --conservative "${GEMS[@]}"
+  programeiro /ruby/gem_install "$GEM_NAME"
 }
