@@ -4,6 +4,8 @@ set -u
 set -e
 
 function task_condition {
+  if ! bool_r "$postgresql_internal"; then return 0; fi
+
   programeiro /linux/service_running postgresql
 }
 
