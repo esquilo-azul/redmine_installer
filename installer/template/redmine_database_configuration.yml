@@ -2,6 +2,7 @@ production:
   adapter: postgresql
   database: ${postgresql_database}
   host: ${postgresql_host}
+  port: ${postgresql_port}
   username: ${postgresql_user}
   password: ${postgresql_password}
   encoding: utf8
@@ -12,6 +13,7 @@ development:
   adapter: postgresql
   database: ${postgresql_database}
   host: ${postgresql_host}
+  port: ${postgresql_port}
   username: ${postgresql_user}
   password: ${postgresql_password}
   encoding: utf8
@@ -22,6 +24,7 @@ test:
   adapter: postgresql
   database: ${postgresql_database_test}
   host: ${postgresql_host}
+  port: ${postgresql_port}
   username: ${postgresql_user}
   password: ${postgresql_password}
   encoding: utf8

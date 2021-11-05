@@ -8,6 +8,7 @@ DATABASE="$(cli_arg 2 "$postgresql_database" "$@")"
 
 PGPASSWORD="$postgresql_password" psql \
   --host "$postgresql_host" \
+  --port "$postgresql_port" \
   --username "$postgresql_user" \
   --tuples-only \
   --no-align \
