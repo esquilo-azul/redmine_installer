@@ -1,7 +1,7 @@
 production:
   adapter: postgresql
   database: ${postgresql_database}
-  host: localhost
+  host: ${postgresql_host}
   username: ${postgresql_user}
   password: ${postgresql_password}
   encoding: utf8
@@ -11,7 +11,7 @@ production:
 development:
   adapter: postgresql
   database: ${postgresql_database}
-  host: localhost
+  host: ${postgresql_host}
   username: ${postgresql_user}
   password: ${postgresql_password}
   encoding: utf8
@@ -21,7 +21,7 @@ development:
 test:
   adapter: postgresql
   database: ${postgresql_database_test}
-  host: localhost
+  host: ${postgresql_host}
   username: ${postgresql_user}
   password: ${postgresql_password}
   encoding: utf8

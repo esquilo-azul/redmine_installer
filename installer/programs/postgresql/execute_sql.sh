@@ -7,7 +7,7 @@ SQL="$1"
 DATABASE="$(cli_arg 2 "$postgresql_database" "$@")"
 
 PGPASSWORD="$postgresql_password" psql \
-  --host 'localhost' \
+  --host "$postgresql_host" \
   --username "$postgresql_user" \
   --tuples-only \
   --no-align \
