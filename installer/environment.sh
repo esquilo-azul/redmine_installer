@@ -29,6 +29,9 @@ done
 IFS="$IFSBAK"
 
 FILES_TO_SOURCE+=("$REDMINE_ROOT/config/install.sh")
+for FILE in "$REDMINE_ROOT/config/install.d/"*.sh; do
+  FILES_TO_SOURCE+=("$FILE")
+done
 
 SETUPS_PATH="$(_build_plugins_path 'setup.sh')"
 IFSBAK="$IFS"
