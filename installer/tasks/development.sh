@@ -8,5 +8,5 @@ function task_condition {
 }
 
 function task_dependencies {
-  echo redmine_database_schema redmine_host_name_setting redmine_mail_from_setting
+  echo redmine_base redmine_database_test
 }
