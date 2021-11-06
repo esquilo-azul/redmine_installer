@@ -6,6 +6,8 @@ export PLUGIN_ROOT=$(dirname "$INSTALL_ROOT")
 export REDMINE_ROOT=$(dirname "$(dirname "$PLUGIN_ROOT")")
 export SUB_ROOT="${PLUGIN_ROOT}/vendor"
 
+source "${SUB_ROOT}/eac-bash-lib/init.sh"
+
 function _build_plugins_path {
   SUBDIR="$1"
   RESULT=''
