@@ -4,7 +4,7 @@ set -u
 set -e
 
 function task_condition {
-  PGPASSWORD="$postgresql_password" psql -h 'localhost' -U "$postgresql_user" -c 'select 1' template1 > /dev/null 2> /dev/null
+  programeiro /postgresql/test_connection template1
 }
 
 function task_dependencies {
