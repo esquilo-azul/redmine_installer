@@ -16,5 +16,5 @@ function task_condition {
 function task_fix {
   set -u
   set -e
-  programeiro /redmine/set_setting_value "$SETTING_NAME" "$mail_from"
+  programeiro /redmine/setting/write "$SETTING_NAME" "$mail_from"
 }

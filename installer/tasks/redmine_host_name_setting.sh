@@ -24,5 +24,5 @@ function task_condition {
 function task_fix {
   set -u
   set -e
-  programeiro /redmine/set_setting_value 'host_name' "$(host_name_setting_template)"
+  programeiro /redmine/setting/write 'host_name' "$(host_name_setting_template)"
 }
