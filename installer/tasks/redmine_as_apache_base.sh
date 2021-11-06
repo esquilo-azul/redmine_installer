@@ -8,5 +8,5 @@ function task_condition {
 }
 
 function task_dependencies {
-  echo development passenger_apache_configuration
+  echo redmine_base passenger_apache_configuration
 }
