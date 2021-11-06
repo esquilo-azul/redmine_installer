@@ -10,7 +10,7 @@ function task_dependencies {
 }
 
 function task_condition {
-  [ "$(programeiro /redmine/get_setting_value "$SETTING_NAME")" == "$mail_from" ]
+  [ "$(programeiro /redmine/setting/read "$SETTING_NAME")" == "$mail_from" ]
 }
 
 function task_fix {
