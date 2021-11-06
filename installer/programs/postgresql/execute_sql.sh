@@ -3,5 +3,12 @@
 set -u
 set -e
 
-PGPASSWORD="$postgresql_password" psql -h 'localhost' -U "$postgresql_user" -tAc "$1" \
+SQL="$1"
+
+PGPASSWORD="$postgresql_password" psql \
+  --host 'localhost' \
+  --username "$postgresql_user" \
+  --tuples-only \
+  --no-align \
+  --command "$SQL" \
   "$postgresql_database"
