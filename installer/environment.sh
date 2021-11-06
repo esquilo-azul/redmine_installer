@@ -4,6 +4,7 @@ set -u
 export INSTALL_ROOT=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 export PLUGIN_ROOT=$(dirname "$INSTALL_ROOT")
 export REDMINE_ROOT=$(dirname "$(dirname "$PLUGIN_ROOT")")
+export SUB_ROOT="${PLUGIN_ROOT}/vendor"
 
 function _build_plugins_path {
   SUBDIR="$1"
@@ -55,7 +56,7 @@ function programeiro_path {
 export -f programeiro_path
 
 function programeiro {
-  PPATH="$(programeiro_path)" "$PLUGIN_ROOT/vendor/programeiro/run.sh" "$@"
+  PPATH="$(programeiro_path)" "${SUB_ROOT}/programeiro/run.sh" "$@"
 }
 export -f programeiro
 
@@ -65,7 +66,7 @@ function taskeiro_path {
 export -f taskeiro_path
 
 function taskeiro {
-  "$PLUGIN_ROOT/vendor/taskeiro/taskeiro" --path "$(taskeiro_path)" "$@"
+  "${SUB_ROOT}/taskeiro/taskeiro" --path "$(taskeiro_path)" "$@"
 }
 export -f taskeiro
 
