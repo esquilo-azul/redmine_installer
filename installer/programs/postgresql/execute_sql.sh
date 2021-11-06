@@ -4,6 +4,7 @@ set -u
 set -e
 
 SQL="$1"
+DATABASE="$(cli_arg 2 "$postgresql_database" "$@")"
 
 PGPASSWORD="$postgresql_password" psql \
   --host 'localhost' \
@@ -11,4 +12,4 @@ PGPASSWORD="$postgresql_password" psql \
   --tuples-only \
   --no-align \
   --command "$SQL" \
-  "$postgresql_database"
+  "$DATABASE"
