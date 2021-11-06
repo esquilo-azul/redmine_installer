@@ -8,7 +8,7 @@ function task_condition {
 }
 
 function task_dependencies {
-  echo postgresql_running
+  echo postgresql_client postgresql_running
 }
 
 function task_fix {
