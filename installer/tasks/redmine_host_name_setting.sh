@@ -18,6 +18,8 @@ function task_dependencies {
 }
 
 function task_condition {
+  if bool_r "$SKIP_DATABASE"; then return 0; fi
+
   return $(programeiro /text/diff_commands 'host_name_setting_template' 'host_name_setting_current')
 }
 

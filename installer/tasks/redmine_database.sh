@@ -4,6 +4,8 @@ set -u
 set -e
 
 function task_condition {
+  if bool_r "$SKIP_DATABASE"; then return 0; fi
+
   programeiro /postgresql/test_connection "$postgresql_database"
 }
 

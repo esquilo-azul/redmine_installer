@@ -10,6 +10,8 @@ function task_dependencies {
 }
 
 function task_condition {
+  if bool_r "$SKIP_DATABASE"; then return 0; fi
+
   [ "$(programeiro /redmine/setting/read "$SETTING_NAME")" == "$mail_from" ]
 }
 
