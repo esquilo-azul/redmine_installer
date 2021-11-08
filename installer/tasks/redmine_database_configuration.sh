@@ -13,6 +13,8 @@ if [ ! -v 'REDMINE_DATABASE_CONFIGURATION_EXTRA' ]; then
   export REDMINE_DATABASE_CONFIGURATION_EXTRA=''
 fi
 
+export REDMINE_DATABASE_EXTRA_SETTINGS="$(programeiro /redmine/database_extra_settings)"
+
 function task_condition {
   programeiro /template/diff "${TEMPLATE_ARGS[@]}"
 }

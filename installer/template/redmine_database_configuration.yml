@@ -8,6 +8,7 @@ production:
   encoding: utf8
   pool: 50
   reconnect: true
+${REDMINE_DATABASE_EXTRA_SETTINGS}
 
 development:
   adapter: postgresql
@@ -19,6 +20,7 @@ development:
   encoding: utf8
   pool: 50
   reconnect: true
+${REDMINE_DATABASE_EXTRA_SETTINGS}
 
 test:
   adapter: postgresql
@@ -30,4 +32,5 @@ test:
   encoding: utf8
   pool: 50
   reconnect: true
+${REDMINE_DATABASE_EXTRA_SETTINGS}
 ${REDMINE_DATABASE_CONFIGURATION_EXTRA}
