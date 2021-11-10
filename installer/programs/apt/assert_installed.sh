@@ -16,5 +16,6 @@ done
 
 if [ ${#INSTALL[@]} -gt 0 ]; then
   >&2 echo "Será necessário instalar os seguintes pacotes debian: $INSTALL"
+  sudo DEBIAN_FRONTEND=noninteractive apt-get -y update
   sudo DEBIAN_FRONTEND=noninteractive apt-get -y install "${INSTALL[@]}"
 fi
