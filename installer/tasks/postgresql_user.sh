@@ -15,5 +15,5 @@ function task_dependencies {
 }
 
 function task_fix {
-  sudo -u postgres psql -c "CREATE ROLE $postgresql_user LOGIN ENCRYPTED PASSWORD '$postgresql_password' NOINHERIT VALID UNTIL 'infinity';" > /dev/null
+  sudo -u postgres psql -c "CREATE ROLE \"$postgresql_user\" LOGIN ENCRYPTED PASSWORD '$postgresql_password' NOINHERIT VALID UNTIL 'infinity';" > /dev/null
 }
