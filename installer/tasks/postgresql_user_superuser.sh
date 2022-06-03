@@ -20,5 +20,5 @@ function task_dependencies {
 }
 
 function task_fix {
-  sudo -u postgres psql -c "ALTER ROLE $postgresql_user WITH SUPERUSER;"  > /dev/null
+  sudo -u postgres psql -c "ALTER ROLE \"$postgresql_user\" WITH SUPERUSER;"  > /dev/null
 }
