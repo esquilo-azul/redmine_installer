@@ -10,7 +10,7 @@ function task_condition {
 }
 
 function task_dependencies {
-  echo postgresql_user_superuser redmine_bundle
+  echo postgresql_user_superuser redmine_runtime
 }
 
 function task_fix {

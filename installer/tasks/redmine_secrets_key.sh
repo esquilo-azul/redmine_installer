@@ -4,7 +4,7 @@ set -u
 set -e
 
 function task_dependencies {
-  echo redmine_bundle
+  echo redmine_runtime
 }
 
 function task_condition {

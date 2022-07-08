@@ -10,7 +10,7 @@ function task_condition {
 }
 
 function task_dependencies {
-  echo redmine_bundle redmine_database_configuration redmine_secrets_file redmine_database
+  echo redmine_runtime redmine_database_configuration redmine_secrets_file redmine_database
 }
 
 function task_fix {
