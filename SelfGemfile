@@ -1,3 +1,5 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
+
+gem 'eac_rails_gem_support', '~> 0.4.1'
