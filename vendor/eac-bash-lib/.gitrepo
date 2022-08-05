@@ -6,7 +6,7 @@
 [subrepo]
   remote = https://github.com/esquilo-azul/eac-bash-lib.git
   branch = master
-  commit = ab0550b6c80d1ad855eefe62e5db951c6611f1ee
-  parent = 1e8c2ed2fd119c72f30a1f7910a78681743a0068
-  method = rebase
-  cmdver = 0.4.1
+	commit = fb939eb914ca6c756baeb68f36ca00e0e3785d6c
+	parent = e43c50be6236b71d211135d8789a8ddc7bf13472
+	method = rebase
+	cmdver = 0.4.1
