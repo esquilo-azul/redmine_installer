@@ -15,5 +15,5 @@ function task_condition {
 
 function task_fix {
   programeiro /redmine/configuration | programeiro /template/apply "${TEMPLATE_ARGS[@]}"
-  programeiro /redmine/installer/triggers/set 'apache_restart'
+  programeiro /redmine/installer/triggers/set 'restart_application'
 }

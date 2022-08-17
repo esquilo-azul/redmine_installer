@@ -28,5 +28,5 @@ function task_fix {
   fi
   programeiro /template/apply "$TEMPLATE" - | sudo tee "$AVAILABLE_PATH" > /dev/null
   sudo a2enconf "${instance_id}"
-  programeiro /redmine/installer/triggers/set 'apache_restart'
+  programeiro /redmine/installer/triggers/set 'restart_application'
 }
