@@ -13,4 +13,10 @@ function restart_apache() {
   fi
 }
 
+function generate_plugins_assets() {
+  >&2 printf -- "%s\n" "Generating plugins assets..."
+  RAILS_ENV=production programeiro /rails/rake redmine:plugins:assets
+}
+
+generate_plugins_assets
 restart_apache
