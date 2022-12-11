@@ -13,5 +13,5 @@ function task_condition {
 }
 
 function task_fix {
-  programeiro /apt/assert_installed "$POSTGRESQL_PACKAGE"
+  package_assert apt "$POSTGRESQL_PACKAGE"
 }

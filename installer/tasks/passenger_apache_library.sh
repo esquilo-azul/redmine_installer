@@ -12,7 +12,7 @@ function task_condition {
 }
 
 function task_fix {
-  programeiro /apt/assert_installed libcurl4-openssl-dev libssl-dev apache2-dev \
+  package_assert apt libcurl4-openssl-dev libssl-dev apache2-dev \
     libapr1-dev libaprutil1-dev apache2
   passenger-install-apache2-module -a
 }

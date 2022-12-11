@@ -10,5 +10,5 @@ function task_condition {
 }
 
 function task_fix {
-  programeiro /apt/assert_installed "$CURL_PACKAGE"
+  package_assert apt "$CURL_PACKAGE"
 }

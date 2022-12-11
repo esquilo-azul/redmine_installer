@@ -14,5 +14,5 @@ function task_condition {
 }
 
 function task_fix {
-  programeiro /apt/assert_installed "${PACKAGES[@]}"
+  package_assert apt "${PACKAGES[@]}"
 }
