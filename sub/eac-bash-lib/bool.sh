@@ -1,6 +1,18 @@
 set -u
 set -e
 
+export DEFAULT_FALSE_VALUE='false'
+export DEFAULT_TRUE_VALUE='true'
+
+function bool_pr() {
+  if var_present_r "$1"; then
+    bool_r "${!1}"
+  else
+    bool_r "${DEFAULT_FALSE_VALUE}"
+  fi
+}
+export -f bool_pr
+
 function bool_r() {
   if [ $# -lt 1 ]; then
     return 1
@@ -9,8 +21,8 @@ function bool_r() {
     return 1
   fi
   INPUT="$(printf -- "$1" | awk '{print tolower($0)}')"
-  TRUE_VALUES=(yes y 0 true t)
-  FALSE_VALUES=(no n false f)
+  TRUE_VALUES=(yes y 0 "${DEFAULT_TRUE_VALUE}" t)
+  FALSE_VALUES=(no n "${DEFAULT_FALSE_VALUE}" f)
   for VALUE in "${TRUE_VALUES[@]}"; do
     if [ "$INPUT" == "$VALUE" ]; then
       return 0

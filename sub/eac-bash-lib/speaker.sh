@@ -1,11 +1,11 @@
 set -u
 set -e
 
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[0;93m'
-CYAN='\033[0;36m'
-NC='\033[0m'
+export RED='\033[0;31m'
+export GREEN='\033[0;32m'
+export YELLOW='\033[0;93m'
+export CYAN='\033[0;36m'
+export NC='\033[0m'
 
 function outerr() {
   local first=1
@@ -46,6 +46,12 @@ function infov() {
 }
 export -f infov
 
+function infov_compact() {
+  for variable in "$@"; do
+    infov "$variable" "${!variable}"
+  done
+}
+
 # Outputs a error message and exit with error code.
 function fatal_error() {
   set -u
@@ -57,6 +63,6 @@ function fatal_error() {
 export -f fatal_error
 
 function info_ok() {
-  printf "${GREEN}$@${NC}\n"
+  outerr "${GREEN}$@${NC}\n"
 }
 export -f info_ok

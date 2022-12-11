@@ -8,7 +8,7 @@ function template_apply() {
     error "\n\n<OUTPUT_FILE> can be a file path or \"-\" (STDOUT)\n"
     return 1
   fi
-  local TEMPLATE_FILE="$1"
+  local TEMPLATE_FILE="$(cli_file_path_or_stdin "$1")"
 
   local OUTPUT_FILE='-'
   if [ $# -ge 2 ]; then
@@ -18,15 +18,7 @@ function template_apply() {
   out_tmp=$(mktemp)
   in_tmp=$(mktemp)
 
-  if [ "$TEMPLATE_FILE" == '-' ]; then
-    >&2 cat <&0 > "$in_tmp"
-  else
-    if [ ! -f "$TEMPLATE_FILE" ]; then
-      error "Template file \"$TEMPLATE_FILE\" does not exist or is not a file\n"
-      return 2
-    fi
-    >&2 cp "$TEMPLATE_FILE" "$in_tmp"
-  fi
+  cat "$TEMPLATE_FILE" > "$in_tmp"
   cp "$in_tmp" "$out_tmp" >&2
 
   for var in $(template_variables "$TEMPLATE_FILE"); do
@@ -59,7 +51,7 @@ function template_diff() {
     return 1
   fi
 
-  local TEMPLATE_FILE="$(cli_file_path_or_stdin "$1")"
+  local TEMPLATE_FILE="$1"
   local OUTPUT_FILE="$(cli_file_path_or_stdin "$2")"
   local INPUT_FILE="$(mktemp)"
   template_apply "$TEMPLATE_FILE" "$INPUT_FILE" <&0
@@ -90,17 +82,11 @@ export -f template_dir_apply
 function template_variables() {
   if [ $# -lt 1 ]; then
     error "Usage:\n\ntemplate_variables <TEMPLATE_FILE>" \
-      "\n<TEMPLATE_FILE> should be a file path."
+      "\n<TEMPLATE_FILE> can be a file path or \"-\" (STDIN)\n"
     return 1
   fi
 
-  FILE="$1"
-
-  if [ ! -f "$FILE" ]; then
-    error "\"$FILE\" does not exist or is not a file"
-    return 2
-  fi
-
+  local FILE="$(cli_file_path_or_stdin "$1")"
   PATTERN='[a-zA-Z][a-zA-Z0-9_]*'
   grep '%%'$PATTERN'%%' "$FILE" -o | grep "$PATTERN" -o
 }
