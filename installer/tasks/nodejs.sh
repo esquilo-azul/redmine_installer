@@ -3,12 +3,14 @@
 set -u
 set -e
 
-export NODEJS_PACKAGE="nodejs"
+function task_dependencies {
+  printf 'asdf'
+}
 
 function task_condition {
-  return $(programeiro /apt/installed "$NODEJS_PACKAGE")
+  [ "$(asdf_version_global nodejs)" == "$nodejs_version" ]
 }
 
 function task_fix {
-  programeiro /apt/assert_installed "$NODEJS_PACKAGE"
+  asdf_version_assert_global nodejs "$nodejs_version"
 }

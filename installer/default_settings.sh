@@ -3,6 +3,7 @@ export address_port=
 export address_path=/redmine
 export apache_document_root=/var/www/html
 export mail_from="redmine <redmine@example.net>"
+export nodejs_version='19.2.0'
 export postgresql_internal=true
 export postgresql_host=localhost
 export postgresql_port=5432
