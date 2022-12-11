@@ -3,18 +3,14 @@
 set -u
 set -e
 
-source "$INSTALL_ROOT/programs/rvm/source.sh"
-
 function task_dependencies {
-  echo rvm
+  printf 'asdf'
 }
 
 function task_condition {
-  [ -f ~/.rvm/rubies/$rvm_ruby/bin/ruby ]
+  [ "$(asdf_version_global ruby)" == "$ruby_version" ]
 }
 
 function task_fix {
-  set +u
-  set +e
-  rvm install $rvm_ruby
+  asdf_version_assert_global ruby "$ruby_version"
 }
