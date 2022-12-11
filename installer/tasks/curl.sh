@@ -6,7 +6,7 @@ set -e
 export CURL_PACKAGE='curl'
 
 function task_condition {
-  return $(programeiro /apt/installed "$CURL_PACKAGE")
+  package_installed apt "$CURL_PACKAGE"
 }
 
 function task_fix {

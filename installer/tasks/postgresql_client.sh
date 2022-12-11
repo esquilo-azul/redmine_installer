@@ -10,7 +10,7 @@ function task_dependencies {
 }
 
 function task_condition {
-  return $(programeiro /apt/installed "${PACKAGES[@]}")
+  package_installed apt "${PACKAGES[@]}"
 }
 
 function task_fix {

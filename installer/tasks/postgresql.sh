@@ -9,7 +9,7 @@ function task_condition {
   if bool_r "$SKIP_DATABASE"; then return 0; fi
   if ! bool_r "$postgresql_internal"; then return 0; fi
 
-  return $(programeiro /apt/installed "$POSTGRESQL_PACKAGE")
+  package_installed apt "$POSTGRESQL_PACKAGE"
 }
 
 function task_fix {

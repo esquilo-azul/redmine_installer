@@ -6,7 +6,7 @@ set -e
 APT_PACKAGES=(apache2)
 
 function task_condition {
-  programeiro /apt/installed "${APT_PACKAGES[@]}"
+  package_installed apt "${APT_PACKAGES[@]}"
 }
 
 function task_fix {
