@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DIR=$(echo ~/.rvm/gems/$rvm_ruby/gems/passenger-*)
+DIR="$(echo $(programeiro /ruby/root 'lib/ruby/gems/*/gems/passenger-*'))"
 if [ -d "$DIR" ]; then
   echo $DIR
 else
