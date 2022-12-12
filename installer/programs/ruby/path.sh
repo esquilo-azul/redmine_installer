@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo ~/.rvm/wrappers/$rvm_ruby/ruby
+programeiro /ruby/root bin/ruby
