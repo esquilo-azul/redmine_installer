@@ -14,7 +14,6 @@ export postgresql_password=redmine
 export postgresql_extra_settings=''
 export postgresql_version=12
 export ruby_version='2.7.7'
-export rvm_ruby="ruby-${ruby_version}"
 export smtp_tls=false
 export smtp_enable_starttls_auto=true
 export smtp_openssl_verify_mode=none
