@@ -8,6 +8,11 @@ function snap_install_multiple() {
 }
 export -f snap_install_multiple
 
+function snap_uninstall_multiple() {
+  sudo snap remove "$@"
+}
+export -f snap_install_multiple
+
 # Deprecated: use "package_installed snap" instead.
 function snap_installed() {
   if snap_installed_single "$1"; then
@@ -24,20 +29,3 @@ function snap_installed_single() {
   fi
 }
 export -f snap_installed_single
-
-# Deprecated: use "package_assert snap" instead.
-function snap_assert_installed() {
-  TO_INSTALL=()
-  for PACKAGE in "$@"; do
-    INSTALLED="$(snap_installed "$PACKAGE")"
-    if ! bool_r "$INSTALLED"; then
-      TO_INSTALL+=("$PACKAGE")
-    fi
-  done
-  if [ ${#TO_INSTALL[@]} -ne 0 ]; then
-    infom "Installing SNAP packages ${TO_INSTALL[@]}..."
-    snap_install_multiple "${TO_INSTALL[@]}"
-    infom "Installed"
-  fi
-}
-export -f snap_assert_installed
