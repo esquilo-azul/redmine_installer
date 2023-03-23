@@ -8,24 +8,38 @@ export BG_RED='\e[41m'
 export NC='\033[0m' # No Color
 
 function _outerr() {
+  local first=1
+  for value in "$@"; do
+    if [ -n "$first" ]; then
+      first=''
+    else
+      _outerr_single ' '
+    fi
+    _outerr_single "$value"
+  done
+}
+
+function _outerr_single() {
   >&2 printf -- '%b' "$1"
 }
 
 function _fatal_error() {
-  _outerr "$BG_RED$1$NC\n"
+  _outerr "${BG_RED}" "$@" "${NC}\n"
   exit 1
 }
 
 function _success() {
-  _outerr "$FG_LGREEN$1$NC\n"
+  _outerr "${FG_LGREEN}" "$@" "${NC}\n"
 }
 
 function _infov() {
-  _outerr "$FG_CYAN$1:$NC $2\n"
+  local LABEL="$1"
+  shift
+  _outerr "${FG_CYAN}" "${LABEL}:" "${NC}" "$@" "\n"
 }
 
 function _debug() {
   if [ -n "$TASKEIRO_DEBUG" ]; then
-    _outerr "${FG_LBLUE}${1}${NC}\n"
+    _outerr "${FG_LBLUE}" "$@" "${NC}\n"
   fi
 }
