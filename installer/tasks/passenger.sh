@@ -10,9 +10,9 @@ function task_dependencies {
 }
 
 function task_condition {
-  programeiro /ruby/gem_installed "$GEM_NAME"
+  package_installed ruby "$GEM_NAME"
 }
 
 function task_fix {
-  programeiro /ruby/gem_install "$GEM_NAME"
+  package_assert ruby "$GEM_NAME"
 }
