@@ -1,13 +1,7 @@
 source "$TASKEIRO_ROOT/lib/manager/dependencies.sh"
 
 function taskeiro_before_run() {
-  local IFS=:
-  for p in $TASKEIRO_PATH; do
-    BEFORE_RUN_PATH="$p/_before_run.sh"
-    if [ -f "$BEFORE_RUN_PATH" ]; then
-      source "$BEFORE_RUN_PATH"
-    fi
-  done
+  _taskeiro_path_callback '_before_run.sh'
 }
 
 function taskeiro_task_path() {
@@ -21,6 +15,22 @@ function taskeiro_task_path() {
   done
   >&2 echo "Task file not found for name \"$1\""
   exit 1
+}
+
+function _taskeiro_path_callback() {
+  SUBPATH="$1"
+  _debug "START _taskeiro_path_callback()" "$@"
+  local IFS=:
+  for p in $TASKEIRO_PATH; do
+    BEFORE_RUN_PATH="${p}/${SUBPATH}"
+    if [ -f "$BEFORE_RUN_PATH" ]; then
+      _debug "Callback ${BEFORE_RUN_PATH}: found"
+      source "$BEFORE_RUN_PATH"
+    else
+      _debug "Callback ${BEFORE_RUN_PATH}: not found"
+    fi
+  done
+  _debug "END _taskeiro_path_callback()" "$@"
 }
 
 function _validate_task_name() {
@@ -68,6 +78,16 @@ function _task_check() {
 }
 
 function _task_pass() {
+function _taskeiro_path_callback() {
+  SUBPATH="$1"
+  local IFS=:
+  for p in $TASKEIRO_PATH; do
+    BEFORE_RUN_PATH="${p}/${SUBPATH}"
+    if [ -f "$BEFORE_RUN_PATH" ]; then
+      source "$BEFORE_RUN_PATH"
+    fi
+  done
+}
   if _call_task_function "$1" task_condition ; then
     RESULT=0
   else
