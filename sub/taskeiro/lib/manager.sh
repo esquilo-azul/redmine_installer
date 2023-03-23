@@ -58,6 +58,7 @@ function _task_run() {
     _debug "DEPENDENCY $1 -> $dep"
     _task_run "$dep"
   done
+  _taskeiro_path_callback '_before_task.sh'
   if ! _task_pass "$1" 1 ; then
     _call_task_function "$1" task_fix
     if ! _task_pass "$1" 0 ; then
