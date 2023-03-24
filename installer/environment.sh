@@ -10,16 +10,6 @@ for FILE in "${INSTALL_ROOT}/environment.d/"*.sh; do
   source "$FILE"
 done
 
-FILES_TO_SOURCE=()
-
-SETTINGS_PATH="$(_build_plugins_path 'default_settings.sh')"
-IFSBAK="$IFS"
-IFS=:
-for SETTINGS in $SETTINGS_PATH; do
-  FILES_TO_SOURCE+=("$SETTINGS")
-done
-IFS="$IFSBAK"
-
 FILES_TO_SOURCE+=("$REDMINE_ROOT/config/install.sh")
 for FILE in "$REDMINE_ROOT/config/install.d/"*.sh; do
   FILES_TO_SOURCE+=("$FILE")
