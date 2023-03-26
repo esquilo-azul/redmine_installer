@@ -1,36 +1,36 @@
 production:
   adapter: postgresql
-  database: ${postgresql_database}
-  host: ${postgresql_host}
-  port: ${postgresql_port}
-  username: ${postgresql_user}
-  password: ${postgresql_password}
+  database: %%postgresql_database%%
+  host: %%postgresql_host%%
+  port: %%postgresql_port%%
+  username: %%postgresql_user%%
+  password: %%postgresql_password%%
   encoding: utf8
   pool: 50
   reconnect: true
-${REDMINE_DATABASE_EXTRA_SETTINGS}
+%%REDMINE_DATABASE_EXTRA_SETTINGS%%
 
 development:
   adapter: postgresql
-  database: ${postgresql_database}
-  host: ${postgresql_host}
-  port: ${postgresql_port}
-  username: ${postgresql_user}
-  password: ${postgresql_password}
+  database: %%postgresql_database%%
+  host: %%postgresql_host%%
+  port: %%postgresql_port%%
+  username: %%postgresql_user%%
+  password: %%postgresql_password%%
   encoding: utf8
   pool: 50
   reconnect: true
-${REDMINE_DATABASE_EXTRA_SETTINGS}
+%%REDMINE_DATABASE_EXTRA_SETTINGS%%
 
 test:
   adapter: postgresql
-  database: ${postgresql_database_test}
-  host: ${postgresql_host}
-  port: ${postgresql_port}
-  username: ${postgresql_user}
-  password: ${postgresql_password}
+  database: %%postgresql_database_test%%
+  host: %%postgresql_host%%
+  port: %%postgresql_port%%
+  username: %%postgresql_user%%
+  password: %%postgresql_password%%
   encoding: utf8
   pool: 50
   reconnect: true
-${REDMINE_DATABASE_EXTRA_SETTINGS}
-${REDMINE_DATABASE_CONFIGURATION_EXTRA}
+%%REDMINE_DATABASE_EXTRA_SETTINGS%%
+%%REDMINE_DATABASE_CONFIGURATION_EXTRA%%

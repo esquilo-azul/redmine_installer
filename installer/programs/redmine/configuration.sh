@@ -17,4 +17,4 @@ else
   export async_prefix=''
 fi
 
-programeiro /template/apply "$INSTALL_ROOT/template/redmine_configuration.yml" -
+template_apply "$INSTALL_ROOT/template/redmine_configuration.yml" -

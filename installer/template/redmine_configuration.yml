@@ -1,13 +1,13 @@
 default:
   email_delivery:
-    delivery_method: :${async_prefix}smtp
-    ${async_prefix}smtp_settings:
-      tls: ${smtp_tls}
-      enable_starttls_auto: ${smtp_enable_starttls_auto}
-      openssl_verify_mode: '${smtp_openssl_verify_mode}'
-      address: '${smtp_server}'
-      port: '${smtp_port}'
-      domain: '${smtp_domain}'
-      authentication: '${smtp_authentication}'${smtp_user_password_section}
+    delivery_method: :%%async_prefix%%smtp
+    %%async_prefix%%smtp_settings:
+      tls: %%smtp_tls%%
+      enable_starttls_auto: %%smtp_enable_starttls_auto%%
+      openssl_verify_mode: '%%smtp_openssl_verify_mode%%'
+      address: '%%smtp_server%%'
+      port: '%%smtp_port%%'
+      domain: '%%smtp_domain%%'
+      authentication: '%%smtp_authentication%%'%%smtp_user_password_section%%
   scm_git_command: /usr/bin/git
-${REDMINE_CONFIGURATION_EXTRA}
+%%REDMINE_CONFIGURATION_EXTRA%%

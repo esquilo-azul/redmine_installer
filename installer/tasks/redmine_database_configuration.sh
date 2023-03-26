@@ -16,10 +16,10 @@ fi
 export REDMINE_DATABASE_EXTRA_SETTINGS="$(programeiro /redmine/database_extra_settings)"
 
 function task_condition {
-  programeiro /template/diff "${TEMPLATE_ARGS[@]}"
+  template_diff "${TEMPLATE_ARGS[@]}"
 }
 
 function task_fix {
-  programeiro /template/apply "${TEMPLATE_ARGS[@]}"
+  template_apply "${TEMPLATE_ARGS[@]}"
   programeiro /redmine/installer/triggers/set 'restart_application'
 }

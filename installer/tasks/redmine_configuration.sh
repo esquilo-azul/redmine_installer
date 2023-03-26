@@ -10,10 +10,10 @@ if [ ! -v 'REDMINE_CONFIGURATION_EXTRA' ]; then
 fi
 
 function task_condition {
-  programeiro /redmine/configuration | programeiro /template/diff "${TEMPLATE_ARGS[@]}"
+  programeiro /redmine/configuration | template_diff "${TEMPLATE_ARGS[@]}" -
 }
 
 function task_fix {
-  programeiro /redmine/configuration | programeiro /template/apply "${TEMPLATE_ARGS[@]}"
+  programeiro /redmine/configuration | template_apply "${TEMPLATE_ARGS[@]}"
   programeiro /redmine/installer/triggers/set 'restart_application'
 }

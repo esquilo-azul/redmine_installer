@@ -16,12 +16,12 @@ function task_condition {
     return 1
   fi
 
-  programeiro /template/diff "$TEMPLATE" "$TARGET"
+  template_diff "$TEMPLATE" "$TARGET"
 }
 
 function task_fix {
   export secret_key_base="$(cat "$SECRET_KEY_PATH")"
   if [ -n "$secret_key_base" ]; then
-    programeiro /template/apply "$TEMPLATE" "$TARGET"
+    template_apply "$TEMPLATE" "$TARGET"
   fi
 }

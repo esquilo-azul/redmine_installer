@@ -18,7 +18,7 @@ function task_condition {
   if [ ! -f "$ENABLED_PATH" ]; then
     return 1
   fi
-  return $(programeiro /template/diff "$TEMPLATE" "$AVAILABLE_PATH" )
+  template_diff "$TEMPLATE" "$AVAILABLE_PATH"
 }
 
 function task_fix {
@@ -26,7 +26,7 @@ function task_fix {
     printf "Variable \$address_path is blank - cannot create Apache configuration\n"
     return 1
   fi
-  programeiro /template/apply "$TEMPLATE" - | sudo tee "$AVAILABLE_PATH" > /dev/null
+  template_apply "$TEMPLATE" - | sudo tee "$AVAILABLE_PATH" > /dev/null
   sudo a2enconf "${instance_id}"
   programeiro /redmine/installer/triggers/set 'restart_application'
 }
