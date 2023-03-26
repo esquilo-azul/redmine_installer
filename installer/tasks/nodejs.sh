@@ -4,7 +4,7 @@ set -u
 set -e
 
 function task_dependencies {
-  printf 'asdf'
+  printf 'asdf_profile'
 }
 
 function task_condition {
