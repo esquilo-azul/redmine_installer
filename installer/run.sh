@@ -13,4 +13,5 @@ DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
 
 source "${DIR}/environment.sh"
 taskeiro "$@"
+source "${DIR}/environment.sh"
 programeiro /redmine/installer/triggers/run_all
