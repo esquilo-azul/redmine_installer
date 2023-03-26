@@ -14,8 +14,10 @@ function restart_apache() {
 }
 
 function generate_plugins_assets() {
-  infom "Generating plugins assets..."
-  RAILS_ENV=production programeiro /rails/rake redmine:plugins:assets
+  if nodejs --version; then
+    infom "Generating plugins assets..."
+    RAILS_ENV=production programeiro /rails/rake redmine:plugins:assets
+  fi
 }
 
 generate_plugins_assets
