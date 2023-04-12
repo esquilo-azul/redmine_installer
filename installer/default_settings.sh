@@ -9,6 +9,7 @@ export postgresql_host=localhost
 export postgresql_port=5432
 export postgresql_database=redmine
 export postgresql_database_test=redmine_test
+export postgresql_database_schema='public'
 export postgresql_user=redmine
 export postgresql_password=redmine
 export postgresql_extra_settings=''

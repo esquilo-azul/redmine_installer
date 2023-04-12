@@ -5,6 +5,7 @@ production:
   port: %%postgresql_port%%
   username: %%postgresql_user%%
   password: %%postgresql_password%%
+  schema_search_path: %%postgresql_database_schema%%
   encoding: utf8
   pool: 50
   reconnect: true
@@ -17,6 +18,7 @@ development:
   port: %%postgresql_port%%
   username: %%postgresql_user%%
   password: %%postgresql_password%%
+  schema_search_path: %%postgresql_database_schema%%
   encoding: utf8
   pool: 50
   reconnect: true
