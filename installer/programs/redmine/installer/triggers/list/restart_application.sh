@@ -14,7 +14,7 @@ function restart_apache() {
 }
 
 function generate_plugins_assets() {
-  if nodejs --version; then
+  if node --version; then
     infom "Generating plugins assets..."
     RAILS_ENV=production programeiro /rails/rake redmine:plugins:assets
   fi
