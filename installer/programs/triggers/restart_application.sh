@@ -9,7 +9,7 @@ function restart_apache() {
   if service --status-all | grep "$SERVICE_NAME" ; then
     sudo service "$SERVICE_NAME" restart
   else
-    infom "Service \"${$SERVICE_NAME}\" is not installed"
+    infom "Service \"${SERVICE_NAME}\" is not installed"
   fi
 }
 
