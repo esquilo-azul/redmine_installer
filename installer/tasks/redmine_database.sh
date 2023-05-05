@@ -14,5 +14,5 @@ function task_dependencies {
 }
 
 function task_fix {
-  programeiro /rails/database_create development
+  programeiro /rails/database_create production
 }
