@@ -10,7 +10,7 @@ function triggers() {
 
 function trigger_run() {
   TRIGGER="$1"
-  PROGRAM="/redmine/installer/triggers/list/$TRIGGER"
+  PROGRAM="/triggers/$TRIGGER"
   >&2 printf "Running trigger \"$TRIGGER\"..."
   programeiro "$PROGRAM"
   rm -f "$(programeiro /redmine/installer/triggers/path)/$TRIGGER"
