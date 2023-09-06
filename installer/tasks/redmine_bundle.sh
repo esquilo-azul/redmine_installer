@@ -12,7 +12,7 @@ function task_condition {
 }
 
 function task_fix {
-  package_assert apt libmagickwand-dev libxslt1-dev libpq-dev imagemagick git cmake
+  package_assert apt libmagic-dev libmagickwand-dev libxslt1-dev libpq-dev imagemagick git cmake
   programeiro /rails/bundle install
   programeiro /redmine/installer/triggers/set 'restart_application'
 }
