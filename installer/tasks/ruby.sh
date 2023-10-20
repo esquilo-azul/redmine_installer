@@ -12,6 +12,6 @@ function task_condition {
 }
 
 function task_fix {
-  package_assert apt curl gcc make zlib1g-dev
+  package_assert apt bzip2 curl gcc make zlib1g-dev
   asdf_version_assert_global ruby "$ruby_version"
 }
