@@ -8,11 +8,7 @@ function passenger_load {
 }
 
 function passenger_conf {
-  echo "
-  <IfModule mod_passenger.c>
-       PassengerRoot $(programeiro /passenger/root)
-       PassengerDefaultRuby $(programeiro /ruby/path)
-  </IfModule>"
+  programeiro /passenger/conf_content
 }
 
 function task_dependencies {
