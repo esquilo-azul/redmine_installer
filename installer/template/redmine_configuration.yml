@@ -7,7 +7,6 @@ default:
       openssl_verify_mode: '%%smtp_openssl_verify_mode%%'
       address: '%%smtp_server%%'
       port: '%%smtp_port%%'
-      domain: '%%smtp_domain%%'
-      authentication: '%%smtp_authentication%%'%%smtp_user_password_section%%
+      domain: '%%smtp_domain%%'%%smtp_authentication_section%%
   scm_git_command: /usr/bin/git
 %%REDMINE_CONFIGURATION_EXTRA%%

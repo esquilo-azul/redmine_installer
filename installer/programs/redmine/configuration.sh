@@ -3,13 +3,26 @@
 set -u
 set -e
 
-if [ "$smtp_authentication" == 'none' ]; then
-  export smtp_user_password_section=''
-else
-  export smtp_user_password_section="
-      user_name: '${smtp_username}'
-      password: '${smtp_password}'"
-fi
+function smtp_var_name() {
+  if [[ "$1" == 'user_name' ]]; then
+    local VAR_SUFFIX='username'
+  else
+    local VAR_SUFFIX="$1"
+  fi
+  outout "smtp_${VAR_SUFFIX}"
+}
+
+export smtp_authentication_section=''
+
+KEYS=(authentication user_name password)
+for KEY in "${KEYS[@]}"; do
+  VAR_NAME="$(smtp_var_name "${KEY}")"
+  VAR_VALUE="${!VAR_NAME}"
+  if [[ -n "${VAR_VALUE}" ]]; then
+    export smtp_authentication_section="${smtp_authentication_section}
+      ${KEY}: '${VAR_VALUE}'"
+  fi
+done
 
 if [ "$(programeiro /redmine/version 4.0.0)" == '-1' ]; then
   export async_prefix='async_'
