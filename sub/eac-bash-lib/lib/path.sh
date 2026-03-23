@@ -1,3 +1,7 @@
+function file_mime_type() {
+  file --mime-type --brief "$@"
+}
+
 function path_expand() {
   PATH_ARG="$1"
   if [ $# -ge 2 ]; then

@@ -1,7 +1,7 @@
 [subrepo]
   cmdver = 0.4.1
-  commit = b42e39d845ca7ebda4dbba71a4bffa45c800231c
+  commit = 2406083bc9399be66f2fbae075a03c0613e8737e
   method = merge
-  parent = 16c75e2afc3301464d2a317920fdefde61224414
+  parent = 3e6bf5b3e2c03749a35029d84a23cae3a16ddb3d
   branch = master
   remote = https://github.com/esquilo-azul/eac-bash-lib.git

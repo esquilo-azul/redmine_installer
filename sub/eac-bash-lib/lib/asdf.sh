@@ -55,6 +55,7 @@ function asdf_version_assert_installed() {
   VERSION="$2"
   asdf_plugin_assert_installed "$PLUGIN"
   if ! asdf_version_installed "$PLUGIN" "$VERSION"; then
+    asdf_run plugin update "$PLUGIN"
     asdf_run install "$PLUGIN" "$VERSION"
   fi
 }

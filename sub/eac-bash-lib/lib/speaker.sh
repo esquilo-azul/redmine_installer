@@ -1,6 +1,7 @@
 set -u
 set -e
 
+export IWS=' '
 export RED='\033[0;31m'
 export GREEN='\033[0;32m'
 export YELLOW='\033[0;93m'
@@ -8,22 +9,32 @@ export CYAN='\033[0;36m'
 export NC='\033[0m'
 
 function outerr() {
+  >&2 outout "$@"
+}
+export -f outerr
+
+function outerr_nl() {
+  outerr "$@" "\n"
+}
+export -f outerr_nl
+
+function outout() {
   local first=1
   for value in "$@"; do
     if [ -n "$first" ]; then
       first=''
     else
-      >&2 outout ' '
+      printf -- '%b' "$IWS"
     fi
-    >&2 outout "$value"
+    printf -- '%b' "$value"
   done
 }
-export -f outerr
-
-function outout() {
-  printf -- '%b' "$1"
-}
 export -f outout
+
+function outout_nl() {
+  outout "$@" "\n"
+}
+export -f outout_nl
 
 # Outputs a error message.
 function error() {

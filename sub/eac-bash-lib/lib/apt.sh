@@ -18,6 +18,9 @@ function apt_install_multiple() {
     fi
     PACKAGES+=("${PARTS[0]}")
   done
+  if [ ${#PACKAGES[@]} -eq 0 ]; then
+    return 0
+  fi
   apt_get_run update
   apt_get_run install "${PACKAGES[@]}"
 }

@@ -1,8 +1,6 @@
 set -u
 set -e
 
-source "$EACBASHLIB_ROOT/bool.sh"
-
 function snap_install_multiple() {
   sudo snap install --edge "$@"
 }
