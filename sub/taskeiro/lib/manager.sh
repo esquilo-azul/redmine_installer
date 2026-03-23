@@ -10,11 +10,11 @@ function taskeiro_task_path() {
     TARGET_PATH="$p/$1.sh"
     if [ -f "$TARGET_PATH" ]; then
       echo "$TARGET_PATH"
-      exit 0
+      return 0
     fi
   done
   >&2 echo "Task file not found for name \"$1\""
-  exit 1
+  return 1
 }
 
 function _taskeiro_path_callback() {
@@ -40,7 +40,7 @@ function _validate_task_name() {
 }
 
 function _task_valid_name() {
-  echo $1 | grep '^[a-z0-9_]\+$' > /dev/null
+  echo $1 | grep '^[a-z0-9_]\+\(/[a-z0-9_]\+\)*$' > /dev/null
 }
 
 function taskeiro_run() {
@@ -79,6 +79,15 @@ function _task_check() {
 }
 
 function _task_pass() {
+  if _call_task_function "$1" task_condition ; then
+    RESULT=0
+  else
+    RESULT=1
+  fi
+  _task_message_condition "$1" "$RESULT" "$2"
+  return $RESULT
+}
+
 function _taskeiro_path_callback() {
   SUBPATH="$1"
   local IFS=:
@@ -88,14 +97,6 @@ function _taskeiro_path_callback() {
       source "$BEFORE_RUN_PATH"
     fi
   done
-}
-  if _call_task_function "$1" task_condition ; then
-    RESULT=0
-  else
-    RESULT=1
-  fi
-  _task_message_condition "$1" "$RESULT" "$2"
-  return $RESULT
 }
 
 function _task_message_condition {
