@@ -21,7 +21,7 @@ function template_apply() {
   cat "$TEMPLATE_FILE" > "$in_tmp"
   cp "$in_tmp" "$out_tmp" >&2
 
-  for var in $(template_variables "$TEMPLATE_FILE"); do
+  for var in $(template_variables "$in_tmp"); do
     if [ -z ${!var+x} ]; then
       >&2 echo "Variable \"$var\" is unset"
       return 1
@@ -29,7 +29,8 @@ function template_apply() {
     CONTENT="$(cat "$in_tmp"; printf Z)"
     CONTENT="${CONTENT%Z}"
     FROM="\%\%${var}\%\%"
-    TO="${!var}"
+    TO="${!var//\\/\\\\}"
+    TO="${TO//&/\\&}"
     printf '%s' "${CONTENT/$FROM/$TO}" > "$out_tmp"
     cp "$out_tmp" "$in_tmp" >&2
   done
