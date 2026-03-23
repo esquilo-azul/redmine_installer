@@ -62,6 +62,7 @@ function infov_compact() {
     infov "$variable" "${!variable}"
   done
 }
+export -f infov_compact
 
 # Outputs a error message and exit with error code.
 function fatal_error() {
