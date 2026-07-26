@@ -1,9 +1,9 @@
 #!/bin/bash
 
-source "$PROOT/lib.sh"
+source "$PROGRAMEIRO_ROOT/lib.sh"
 TERM=''
 if [ $# -gt 0 ]; then
   TERM=$1
 fi
 >&2 echo "Searched: \"$TERM\""
-p_completion_search "$TERM"
+programeiro_completion_search "$TERM"
