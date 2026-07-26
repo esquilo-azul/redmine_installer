@@ -1,6 +1,3 @@
-set -u
-set -e
-
 export APT_PACKAGE_SOURCE_SEPARATOR='@'
 
 function apt_get_run() {

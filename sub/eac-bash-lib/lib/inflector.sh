@@ -1,6 +1,3 @@
-set -u
-set -e
-
 function parameterize() {
   if [ $# -ge 1 ]; then
     printf -- '%s' "$@" | parameterize

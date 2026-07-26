@@ -1,6 +1,3 @@
-set -u
-set -e
-
 export DEFAULT_ASDF_ROOT="${HOME}/.asdf"
 export DEFAULT_ASDF_VERSION='0.10.2'
 
@@ -63,10 +60,10 @@ export -f asdf_version_assert_installed
 
 function asdf_version_global() {
   PLUGIN="$1"
-  set +e
+
   OUTPUT=$(asdf_run current "$PLUGIN" global)
   RESULT=$?
-  set -e
+
   if [ $RESULT -eq 0 ]; then
     outout "$OUTPUT" | awk '{print $2}'
   elif [ $RESULT -eq 126 ]; then

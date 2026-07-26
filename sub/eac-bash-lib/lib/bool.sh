@@ -1,6 +1,3 @@
-set -u
-set -e
-
 export DEFAULT_FALSE_VALUE='false'
 export DEFAULT_TRUE_VALUE='true'
 

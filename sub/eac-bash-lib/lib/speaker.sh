@@ -1,6 +1,3 @@
-set -u
-set -e
-
 export IWS=' '
 export RED='\033[0;31m'
 export GREEN='\033[0;32m'
@@ -66,9 +63,6 @@ export -f infov_compact
 
 # Outputs a error message and exit with error code.
 function fatal_error() {
-  set -u
-  set -e
-
   error "$@"
   exit 1
 }

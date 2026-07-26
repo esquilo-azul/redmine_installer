@@ -1,6 +1,3 @@
-set -u
-set -e
-
 # Deprecated: use "package_assert apt" instead.
 function deb_assert_installed() {
   package_assert apt "$@"

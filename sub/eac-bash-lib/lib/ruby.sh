@@ -1,5 +1,12 @@
 export RUBY_PACKAGE_SOURCE_SEPARATOR=':'
 
+function ruby_gem_path() {
+  local GEMNAME="$1"
+
+  gem open --editor echo "${GEMNAME}"
+}
+export -f ruby_gem_path
+
 function ruby_install_multiple() {
   gem install -V "$@"
 }

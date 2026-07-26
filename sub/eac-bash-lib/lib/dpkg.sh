@@ -1,6 +1,3 @@
-set -u
-set -e
-
 function dpkg_file_installed() {
   for DEB_FILE in $@; do
     PACKAGE_NAME="$(dpkg --field "$DEB_FILE" Package)"

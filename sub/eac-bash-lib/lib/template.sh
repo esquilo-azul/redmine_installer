@@ -1,6 +1,3 @@
-set -u
-set -e
-
 function template_apply() {
   if [ $# -lt 1 ]; then
     error "Usage:\n\ntemplate_apply <TEMPLATE_FILE> [<OUTPUT_FILE>='-']\n"

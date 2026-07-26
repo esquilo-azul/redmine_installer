@@ -1,6 +1,3 @@
-set -u
-set -e
-
 function snap_install_multiple() {
   sudo snap install --edge "$@"
 }

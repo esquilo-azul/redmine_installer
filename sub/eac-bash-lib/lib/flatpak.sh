@@ -1,6 +1,3 @@
-set -u
-set -e
-
 function flatpak_install_multiple() {
   sudo flatpak --system --assumeyes --noninteractive "$@"
 }
