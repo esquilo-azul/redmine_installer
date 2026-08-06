@@ -5,6 +5,7 @@ export INSTALL_ROOT=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 export PLUGIN_ROOT=$(dirname "$INSTALL_ROOT")
 export REDMINE_ROOT=$(dirname "$(dirname "$PLUGIN_ROOT")")
 export SUB_ROOT="${PLUGIN_ROOT}/sub"
+export EACBASHLIB_ROOT="${SUB_ROOT}/eac-bash-lib"
 
 for FILE in "${INSTALL_ROOT}/environment.d/"*.sh; do
   source "$FILE"
