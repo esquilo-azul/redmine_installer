@@ -3,25 +3,12 @@
 set -u
 set -e
 
-TEMPLATE="$INSTALL_ROOT/template/redmine_secrets.yml"
-TARGET="$REDMINE_ROOT/config/secrets.yml"
-
-function task_dependencies {
-  echo redmine_secrets_key
-}
+TARGET="$REDMINE_ROOT/config/credentials.yml.enc"
 
 function task_condition {
-  export secret_key_base="$(cat "$SECRET_KEY_PATH")"
-  if [ -z "$secret_key_base" ]; then
-    return 1
-  fi
-
-  template_diff "$TEMPLATE" "$TARGET"
+  [[ -f "$TARGET" ]]
 }
 
 function task_fix {
-  export secret_key_base="$(cat "$SECRET_KEY_PATH")"
-  if [ -n "$secret_key_base" ]; then
-    template_apply "$TEMPLATE" "$TARGET"
-  fi
+  programeiro /rails/rails credentials:edit
 }
