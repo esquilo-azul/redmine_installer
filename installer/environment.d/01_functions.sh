@@ -19,7 +19,7 @@ function programeiro_path {
 export -f programeiro_path
 
 function programeiro {
-  PPATH="$(programeiro_path)" "${SUB_ROOT}/programeiro/run.sh" "$@"
+  PROGRAMEIRO_PATH="$(programeiro_path)" "${SUB_ROOT}/programeiro/programeiro.sh" "$@"
 }
 export -f programeiro
 
