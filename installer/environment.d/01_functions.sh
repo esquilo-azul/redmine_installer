@@ -29,6 +29,6 @@ function taskeiro_path {
 export -f taskeiro_path
 
 function taskeiro {
-  "${SUB_ROOT}/taskeiro/taskeiro" --path "$(taskeiro_path)" "$@"
+  "${SUB_ROOT}/taskeiro/taskeiro.sh" --path "$(taskeiro_path)" "$@"
 }
 export -f taskeiro
