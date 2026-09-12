@@ -1,3 +1,4 @@
+export address_https=false
 export address_host=localhost
 export address_port=
 export address_path=/redmine
