@@ -3,11 +3,13 @@
 set -u
 set -e
 
+PACKAGE_ARGS=('systemctl' 'postgresql')
+
 function task_condition {
   if bool_r "$SKIP_DATABASE"; then return 0; fi
   if ! bool_r "$postgresql_internal"; then return 0; fi
 
-  programeiro /linux/service_running postgresql
+  SUDO=t package_installed "${PACKAGE_ARGS[@]}"
 }
 
 function task_dependencies {
@@ -15,5 +17,5 @@ function task_dependencies {
 }
 
 function task_fix {
-  sudo service postgresql start
+  SUDO=t package_assert "${PACKAGE_ARGS[@]}"
 }
