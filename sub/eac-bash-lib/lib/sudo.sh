@@ -6,10 +6,12 @@ export DEFAULT_SUDO_USER_VALUE=''
 function sudo_use_r() {
   bool_pr "${DEFAULT_SUDO_USE_ENVVAR}" || sudo_user_r
 }
+export -f sudo_use_r
 
 function sudo_user_r() {
   [ "$(sudo_user_s)" != '' ]
 }
+export -f sudo_user_r
 
 function sudo_user_s() {
   if var_present_r "${DEFAULT_SUDO_USER_ENVVAR}"; then
@@ -18,6 +20,7 @@ function sudo_user_s() {
     outout ''
   fi
 }
+export -f sudo_user_s
 
 function sudo_run() {
   PRE_COMMAND_ARGS=()

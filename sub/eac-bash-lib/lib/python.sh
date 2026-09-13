@@ -17,3 +17,4 @@ function python_pip_command() {
     outout "${DEFAULT_PIP_COMMAND}\n"
   fi
 }
+export -f python_pip_command

@@ -8,6 +8,37 @@ function pathvar_assert() {
 }
 export -f pathvar_assert
 
+function pathvar_find_file() {
+  local PATHVAR="$1"
+  local FILE_SUBPATH_PATTERN="$2"
+
+  while read -r FOUND_FILE; do
+    outout "$FOUND_FILE"
+    return 0
+  done < <(pathvar_find_files "${PATHVAR}" "${FILE_SUBPATH_PATTERN}")
+
+  return 1
+}
+export -f pathvar_find_file
+
+function pathvar_find_files() {
+  pathvar_find_multiple "$1" "$2" -type f
+}
+export -f pathvar_find_files
+
+function pathvar_find_multiple() {
+  local PATHVAR="$1"
+  local FILE_SUBPATH_PATTERN="$2"
+  shift
+  shift
+
+  while read -r NODE; do
+    [ -d "$NODE" ] || continue
+    find "${NODE}" "$@" -path "${NODE}/${FILE_SUBPATH_PATTERN}" 2>/dev/null
+  done < <(pathvar_to_lines "${PATHVAR}")
+}
+export -f pathvar_find_multiple
+
 function pathvar_join() {
   local ACUM=''
   for VALUE in "$@"; do
