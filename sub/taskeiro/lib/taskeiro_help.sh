@@ -7,3 +7,4 @@ Usage:
 EOS
   exit 0
 }
+export -f taskeiro_help

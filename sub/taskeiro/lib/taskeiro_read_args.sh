@@ -17,3 +17,4 @@ function taskeiro_read_args() {
     shift
   done
 }
+export -f taskeiro_read_args

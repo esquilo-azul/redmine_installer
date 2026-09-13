@@ -1,7 +1,7 @@
 [subrepo]
   cmdver = 0.4.9
-  commit = cfba728042ae7f417a669f7a5ac382bc22d58797
+  commit = 4277e7576910a4711031458ed8eb9da19814b0f9
   method = merge
-  parent = 38fe2aabb84f757c198d5aac85a7a368c70c5f3a
+  parent = dcd4f4e26921cedcdd6b96383501fa7fd774e06d
   branch = master
   remote = https://github.com/esquilo-azul/taskeiro

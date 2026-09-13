@@ -3,10 +3,11 @@ function taskeiro_validate() {
     fatal_error "TASKEIRO_PATH is empty"
   fi
   printf "$TASKEIRO_TASKS" | while read TASK; do
-     _validate_task_name "$TASK"
+     taskeiro_task_validate_name "$TASK"
     local task_path=$(taskeiro_task_path "$TASK")
     if [ ! -f "$task_path" ]; then
-      fatal_error "Task file \"$task_path\" not found"
+      fatal_error "No file found for task \"$TASK\""
     fi
   done
 }
+export -f taskeiro_validate
