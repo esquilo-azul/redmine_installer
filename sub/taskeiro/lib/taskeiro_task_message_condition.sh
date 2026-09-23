@@ -10,7 +10,9 @@ function taskeiro_task_message_condition {
   if [ "$3" == '0' ]; then
     m=$m' (AFTER FIX)'
   fi
-  m=$m" $FG_LYELLOW[$(taskeiro_task_dependencies "$1")]$NC"
+  local deps
+  deps=$(taskeiro_task_dependencies "$1")
+  m=$m" $FG_LYELLOW[${deps//$'\n'/ }]$NC"
   infov "$1" "$m"
 }
 export -f taskeiro_task_message_condition
