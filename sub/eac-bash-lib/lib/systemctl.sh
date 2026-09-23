@@ -17,6 +17,7 @@ export -f systemctl_install_multiple
 
 function systemctl_install_single() {
   local SERVICE="$1"
+  systemctl_run daemon-reload
   systemctl_assert 'enabled' 'enable' "${SERVICE}"
   systemctl_assert 'active' 'start' "${SERVICE}"
 }

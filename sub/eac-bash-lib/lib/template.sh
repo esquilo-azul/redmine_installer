@@ -35,8 +35,8 @@ function template_apply() {
   if [ "$OUTPUT_FILE" == '-' ]; then
     cat "$out_tmp"
   else
-    mkdir -p "$(dirname "$OUTPUT_FILE")" >&2
-    cp "$out_tmp" "$OUTPUT_FILE" >&2
+    sudo_run mkdir -p "$(dirname "$OUTPUT_FILE")" >&2
+    sudo_run cp "$out_tmp" "$OUTPUT_FILE" >&2
   fi
 }
 export -f template_apply

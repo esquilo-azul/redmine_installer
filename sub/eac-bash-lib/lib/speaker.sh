@@ -11,7 +11,7 @@ function outerr() {
 export -f outerr
 
 function outerr_nl() {
-  outerr "$@" "\n"
+  OUTOUT_NEW_LINE=t outerr "$@"
 }
 export -f outerr_nl
 
@@ -25,11 +25,14 @@ function outout() {
     fi
     printf -- '%b' "$value"
   done
+  if bool_pr 'OUTOUT_NEW_LINE'; then
+    printf -- '%b' '\n'
+  fi
 }
 export -f outout
 
 function outout_nl() {
-  outout "$@" "\n"
+  OUTOUT_NEW_LINE=t outout "$@"
 }
 export -f outout_nl
 
