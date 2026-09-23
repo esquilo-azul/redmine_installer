@@ -19,11 +19,14 @@ _p_completion() {
   cur=${COMP_WORDS[COMP_CWORD]}
   case "$COMP_CWORD" in
     1)
-    COMPREPLY=( $( programeiro_completion_search $cur ) )
+    mapfile -t COMPREPLY < <( programeiro_completion_search "$cur" )
     ;;
 
     *)
-    COMPREPLY=( $( compgen -o default -- $cur ) )
+    mapfile -t COMPREPLY < <( compgen -o default -- "$cur" )
+    if [[ ${#COMPREPLY[@]} -gt 0 ]]; then
+      compopt -o filenames +o nospace 2>/dev/null || true
+    fi
     ;;
   esac
   return 0
