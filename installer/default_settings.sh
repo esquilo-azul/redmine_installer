@@ -3,6 +3,7 @@ export address_host=localhost
 export address_port=
 export address_path=/redmine
 export apache_document_root=/var/www/html
+export asdf_root='/opt/asdf'
 export mail_from="redmine <redmine@example.net>"
 export nodejs_version='26.6.0'
 export passenger_start_timeout='300'
