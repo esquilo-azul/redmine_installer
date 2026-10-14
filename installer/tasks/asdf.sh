@@ -4,7 +4,7 @@ set -u
 set -e
 
 function task_condition {
-  [ -d "$(asdf_root)" ]
+  [ -f "$(asdf_root)/asdf.sh" ]
 }
 
 function task_fix {
