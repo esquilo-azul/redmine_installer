@@ -16,7 +16,7 @@ for FILE in "$REDMINE_ROOT/config/install.d/"*.sh; do
   FILES_TO_SOURCE+=("$FILE")
 done
 
-SETUPS_PATH="$(_build_plugins_path 'setup.sh')"
+SETUPS_PATH="$(_build_plugins_path 'settings.sh')"
 IFSBAK="$IFS"
 IFS=:
 if ls $SETUPS_PATH 1> /dev/null 2>&1; then
