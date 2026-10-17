@@ -1,4 +1,4 @@
-source "${SUB_ROOT}/eac-bash-lib/init.sh"
+source "${EACBASHLIB_ROOT}/init.sh"
 
 function _build_plugins_path {
   SUBDIR="$1"
@@ -13,22 +13,12 @@ function _build_plugins_path {
 }
 export -f _build_plugins_path
 
-function programeiro_path {
-  _build_plugins_path "program"
-}
-export -f programeiro_path
-
 function programeiro {
-  PROGRAMEIRO_PATH="$(programeiro_path)" "${SUB_ROOT}/programeiro/programeiro.sh" "$@"
+  "${EACMULTITOOLCORE_ROOT}/bin/eac-multitool-core" "$@"
 }
 export -f programeiro
 
-function taskeiro_path {
-  _build_plugins_path "task"
-}
-export -f taskeiro_path
-
 function taskeiro {
-  "${SUB_ROOT}/taskeiro/taskeiro.sh" --path "$(taskeiro_path)" "$@"
+  programeiro /taskeiro/run "$@"
 }
 export -f taskeiro

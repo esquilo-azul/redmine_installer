@@ -4,8 +4,9 @@ set -u
 export INSTALL_ROOT=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 export PLUGIN_ROOT=$(dirname "$INSTALL_ROOT")
 export REDMINE_ROOT=$(dirname "$(dirname "$PLUGIN_ROOT")")
-export SUB_ROOT="${PLUGIN_ROOT}/sub"
-export EACBASHLIB_ROOT="${SUB_ROOT}/eac-bash-lib"
+export EACMULTITOOLCORE_ROOT="${PLUGIN_ROOT}/sub/eac-multitool-core"
+export EACBASHLIB_ROOT="${EACMULTITOOLCORE_ROOT}/sub/eac-bash-lib"
+export BASH_TO_REQUIRE="${EACBASHLIB_ROOT}/init.sh"
 
 for FILE in "${INSTALL_ROOT}/environment.d/"*.sh; do
   source "$FILE"
