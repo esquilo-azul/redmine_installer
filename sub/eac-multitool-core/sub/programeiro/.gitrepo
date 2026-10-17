@@ -1,0 +1,7 @@
+[subrepo]
+  cmdver = 0.4.1
+  commit = 023fc256ff5dfdbf2a60de1537e622ddc9d9324b
+  method = merge
+  parent = 7a66e0ddc572bd55b8a9d2912bc17d0274b42018
+  branch = master
+  remote = https://github.com/esquilo-azul/programeiro.git
