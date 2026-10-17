@@ -14,7 +14,7 @@ function _build_plugins_path {
 export -f _build_plugins_path
 
 function programeiro_path {
-  _build_plugins_path "programs"
+  _build_plugins_path "program"
 }
 export -f programeiro_path
 
