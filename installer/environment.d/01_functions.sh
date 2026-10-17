@@ -24,7 +24,7 @@ function programeiro {
 export -f programeiro
 
 function taskeiro_path {
-  _build_plugins_path "tasks"
+  _build_plugins_path "task"
 }
 export -f taskeiro_path
 
